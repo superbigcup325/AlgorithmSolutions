@@ -32,6 +32,18 @@ $RECYCLE.BIN/
 # Linux
 *~
 
+# 構建目錄
+build/
+bin/
+Debug/
+Release/
+x64/
+x86/
+.vs/
+*.vcxproj.*
+CMakeCache.txt
+CMakeFiles/
+
 # ========== 編譯文件 ==========
 # Java
 *.class
@@ -52,12 +64,15 @@ env.bak/
 venv.bak/
 
 # C/C++
-*.o
-*.out
 *.exe
-*.dll
+*.out
+*.o
+*.obj
 *.so
+*.dll
 *.dylib
+*.a
+*.lib
 
 # ========== 日誌和緩存 ==========
 *.log
