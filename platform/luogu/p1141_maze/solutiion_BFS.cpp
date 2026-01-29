@@ -13,18 +13,18 @@ int bfs(int x, int y, vector<vector<int>>& graph,vector<vector<int>>& comp,int i
     q.emplace((pair<int,int>){x,y});
     cells.emplace_back((pair<int,int>){x,y});
     while (!q.empty()) {
-        pair<int,int> p = q.front();
+        auto [px, py] = q.front();
         q.pop();
-        int prev=graph[p.first][p.second];
+        int prev=graph[px][py];
         for (int i = 0; i < 4; i++) {
-            int x = p.first + dx[i];
-            int y = p.second + dy[i];
-            if (x<1||x>len||y<1||y>len) continue;
-            if (comp[x][y]!=0) continue;
-            if (graph[x][y]!=prev) {
-                cells.emplace_back((pair<int,int>){x,y});
-                q.emplace((pair<int,int>){x,y});
-                comp[x][y]=id;
+            int nx = px + dx[i];
+            int ny = py + dy[i];
+            if (nx<1||nx>len||ny<1||ny>len) continue;
+            if (comp[nx][ny]!=0) continue;
+            if (graph[nx][ny]!=prev) {
+                cells.emplace_back((pair<int,int>){nx,ny});
+                q.emplace((pair<int,int>){nx,ny});
+                comp[nx][ny]=id;
             }
         }
     }

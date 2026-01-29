@@ -1,7 +1,7 @@
 # B. Prefix Max
 
 **时间限制**：每测试点 1.5 秒  
-**内存限制**：每测试点 256 MB
+**内存限制**：每测试点 256 MB  
 **link**: https://codeforces.com/contest/2185/problem/B
 
 ---
