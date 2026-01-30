@@ -7,9 +7,9 @@
 ```
 AlgorithmSolutions/
 ├── platform/              # 按平台分类
+│   ├── codeforces/        # codeforces 题解
 │   ├── leetcode/          # LeetCode 题解
 │   ├── luogu/             # 洛谷题解
-│   ├── uqo/               # 其他OJ平台
 │   └── szuvj/             # 校内OJ
 ├── byAlgorithms/          # 按算法分类（软链接）
 │   ├── BFS/
@@ -19,6 +19,7 @@ AlgorithmSolutions/
 └── scripts/               # 工具脚本
 ├── create_symlinks.py     # 软链接管理脚本
 └── run_as_admin.bat       # Windows管理员运行脚本
+└── template.cpp           # 模板
 ```
 
 ## 内容概览
