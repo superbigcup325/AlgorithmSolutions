@@ -18,7 +18,7 @@ int main() {
             int b,c;
             cin>>b>>c;
             if (num[b]+c>h) {
-                ans=num;//不經濟的重置方法
+                ans=num;//开销过大的重置
                 continue;
             }
             ans[b]+=c;

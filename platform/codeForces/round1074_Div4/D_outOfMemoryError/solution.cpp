@@ -14,12 +14,13 @@ signed main() {
         for (int i=1;i<=n;i++) {
             cin>>num[i];
         }
-        vector<pair<int,int>> vec;//記錄每一步操作，溢出時回退
+        vector<pair<int,int>> vec;//记录每一步操作，溢出时回退
         while (m--) {
             int b,c;
             cin>>b>>c;
             vec.push_back({b,num[b]});
             num[b]+=c;
+            //溢出
             if (num[b]>h) {
                 while (!vec.empty()) {
                     auto [idx,val]=vec.back();

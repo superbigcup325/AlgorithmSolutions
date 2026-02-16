@@ -12,9 +12,9 @@ vector<vector<int>> floyd(vector<vector<pair<int,int>>>& graph) {
     }
     for (int from=1;from<=v;from++) {
         for (auto& [to,weight]:graph[from]) {
-            dis[from][to]=min(dis[from][to],weight);//might repeat
-            // if no direction add:
-            //dis[to][from]=min(dis[to][from],weight);
+            dis[from][to]=min(dis[from][to],weight);// might repeat
+            // if no direction, add:
+            // dis[to][from]=min(dis[to][from],weight);
         }
     }
     for (int mid=1;mid<=v;mid++) {
@@ -29,7 +29,7 @@ vector<vector<int>> floyd(vector<vector<pair<int,int>>>& graph) {
             }
         }
     }
-    //negative circle detect
+    // negative circle detect
     // for (int i=1;i<=v;i++) {
     //     for (int j=1;j<=v;j++) {
     //         if (dis[i][j]<0) cout<<"warning: negative circle detected"<<endl;

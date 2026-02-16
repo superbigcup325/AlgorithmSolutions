@@ -9,37 +9,46 @@ int main() {
     while(t--) {
         int n,m,k;
         cin>>n>>m>>k;
-        vector<int> alive(n);
-        vector<int> spike(m);
-        for(int i=0;i<n;i++) {
-            cin>>alive[i];
+        unordered_set<int> robot;
+        int temp;
+        for (int i=1;i<=n;i++) {
+            cin>>temp;
+            robot.insert(temp);
         }
-        for(int i=0;i<m;i++) {
-            cin>>spike[i];
+        unordered_set<int> spike;
+        for (int i=1;i<=m;i++) {
+            cin>>temp;
+            spike.insert(temp);
         }
-        unordered_set<int> spk;
-        for (auto pos:spike) spk.insert(pos);
         string move;
         int offset=0;
+        unordered_map<int,int> firstOffsetTime;
         cin>>move;
         for (int i=0;i<k;i++) {
-            if (alive.empty()) {
-                cout << alive.size() << (i == k-1 ? "\n" : " ");
-                continue;
-            }
             if (move[i]=='R') offset++;
             else offset--;
-            vector<int> die;
-            for (auto pos:alive) {
-                int now=pos+offset;
-                if (spk.count(now)) {
-                    die.push_back(pos);
+            if (!firstOffsetTime.count(offset)) {
+                firstOffsetTime.insert({offset,i});
+            }
+        }
+        vector<int> dead_time(n,k+1);
+        for (auto spk:spike) {
+            for (auto& [delta,time]:firstOffsetTime) {
+                int pos=spk-delta;
+                if (robot.count(pos)) {
+                    dead_time[pos]=min(dead_time[pos],time);
                 }
             }
-            for (auto pos:die) {
-                alive.erase(pos);
-            }
-            cout << alive.size() << (i == k-1 ? "\n" : " ");
+        }
+        vector<int> dead(k,0);
+        for (auto time:dead_time) {
+            dead[time]++;
+        }
+        int res=n;
+        for (int i=0;i<k;i++) {
+            res-=dead[i];
+            cout<<res;
+            cout<<(i==k-1? '\n':' ');
         }
     }
     return 0;

@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+//本质上是求最长连续子序列的长度
+
 int main() {
     int t;
     cin>>t;
