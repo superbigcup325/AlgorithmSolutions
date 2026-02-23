@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-//weight can be less than 0, but no negative circle
+// 支持负边权，不支持负环
 
 vector<vector<int>> floyd(vector<vector<pair<int,int>>>& graph) {
     int v=graph.size()-1;
@@ -13,7 +13,7 @@ vector<vector<int>> floyd(vector<vector<pair<int,int>>>& graph) {
     for (int from=1;from<=v;from++) {
         for (auto& [to,weight]:graph[from]) {
             dis[from][to]=min(dis[from][to],weight);// might repeat
-            // if no direction, add:
+            // 无向图 加：
             // dis[to][from]=min(dis[to][from],weight);
         }
     }
@@ -22,14 +22,14 @@ vector<vector<int>> floyd(vector<vector<pair<int,int>>>& graph) {
             if (dis[from][mid]==INT_MAX) {continue;}
             for (int to=1;to<=v;to++) {
                 if (dis[from][mid]<INT_MAX&&dis[mid][to]<INT_MAX) {
-                    //avoid exceed
+                    // 防止溢出
                     long long newdis=dis[from][mid]+dis[mid][to];
                     dis[from][to]=dis[from][to]<newdis? dis[from][to]:newdis;
                 }
             }
         }
     }
-    // negative circle detect
+    // 负环检测
     // for (int i=1;i<=v;i++) {
     //     for (int j=1;j<=v;j++) {
     //         if (dis[i][j]<0) cout<<"warning: negative circle detected"<<endl;

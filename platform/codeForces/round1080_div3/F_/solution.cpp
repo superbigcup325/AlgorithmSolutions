@@ -16,31 +16,36 @@ signed main() {
             cin>>a>>b>>c;
             v[i]={a,b,c};
         }
-        vector<int> size(t+1,0);
+        vector<vector<bool>> graph(len+1,vector<bool>(len+1,false));
         for (int i=1;i<=len;i++) {
             for (int j=i+1;j<=len;j++) {
-                int a1=v[i][0],b1=v[i][1],c1=v[i][2];
-                int a2=v[j][0],b2=v[j][1],c2=v[j][2];
+                auto [a1,b1,c1]=v[i];
+                auto [a2,b2,c2]=v[j];
                 int a=a1-a2,b=b1-b2,c=c1-c2;
                 if (a==0) {
                     if (b==0) {
                         if (c==0) {
                             continue;//题目保证不会
                         }
-                        size[i]++;
+                        graph[i][j]=true;
                     }
                     continue;//不独立,b!=0
                 }
                 else {
                     int delta=b*b-4*a*c;
                     if (delta<0) {
-                        size[i]++;//永不相交，独立
+                        graph[i][j]=true;//永不相交，独立
                     }
                 }
             }
         }
+        vector<int> ans;
         for (int i=1;i<=len;i++) {
-            cout<<size[i]+1<<' ';
+            vector<int> can;
+            for (int j=1;j<=len;j++) {
+                if (graph[i][j]) can.push_back(j);
+            }
+
         }
     }
     return 0;
