@@ -1,7 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-//本质上是求最长连续子序列的长度
+// 想求不在序列中的最小非负整数的最大值，则前面必有连续自然数序列
+// 本质上是求最长连续子序列的长度
 
 int main() {
     int t;
@@ -13,6 +14,7 @@ int main() {
         for (int i=0;i<len;i++) {
             cin>>v[i];
         }
+
         sort(v.begin(),v.end());
         int prev=v[0];
         int ans=0;

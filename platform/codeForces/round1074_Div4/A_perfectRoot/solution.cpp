@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// 依题意，任意自然数都是一个数的平方根
+
 int main () {
     int t;
     cin>>t;
