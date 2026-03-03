@@ -81,6 +81,12 @@ public:
         }
         return result;
     }
+    void print() const {
+        int len=digits.size();
+        for (int i=len-1;i>=0;i--) {
+            cout<<digits[i];
+        }
+    }
 };
 
 signed main() {
