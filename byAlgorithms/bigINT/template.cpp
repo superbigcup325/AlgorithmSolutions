@@ -17,7 +17,7 @@ public:
     bigInt(string& num) {
         int len = num.length();
         for (int i=len-1;i>=0;i--) {
-            digits.push_back(num[i]);
+            digits.push_back(num[i]-'0');
         }
     }
     bigInt operator+(const bigInt& other) const {
@@ -49,6 +49,9 @@ public:
                 borrow=0;
             }
         }
+        while (result.digits.size()>1&&result.digits.back()==0) {
+            result.digits.pop_back();
+        }
         return result;
     }
     bigInt operator*(const bigInt& other) const {
@@ -64,7 +67,9 @@ public:
                 carry=sum/10;
             }
         }
-        while (result.digits.size()>1&&result.digits.back()==0) {}
+        while (result.digits.size()>1&&result.digits.back()==0) {
+            result.digits.pop_back();
+        }
         return result;
     }
     bigInt operator/(int divisor) const {
@@ -73,8 +78,8 @@ public:
         long long remainder=0;
         for (int i=len-1;i>=0;i--) {
             remainder=remainder*10+digits[i];
-            result.digits.insert(result.digits.begin(),remainder%divisor);
-            remainder/=divisor;
+            result.digits.insert(result.digits.begin(),remainder/divisor);
+            remainder%=divisor;
         }
         while (result.digits.size()>1&&result.digits.back()==0) {
             result.digits.pop_back();
