@@ -1,0 +1,1 @@
+E:/code/AlgorithmSolutions/platform/codeForces/round1084_div3/C_/solution_stack.cpp
