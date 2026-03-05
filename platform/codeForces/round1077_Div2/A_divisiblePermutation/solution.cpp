@@ -3,7 +3,6 @@ using namespace std;
 
 //第一想法dfs正着做麻烦，超时
 //对于最后两项，只能为{n,1}或{1,n}，再依次向前填充即可
-//时间复杂度O(n),空间复杂度O(n)
 
 int main() {
     int t;

@@ -45,7 +45,6 @@ signed main() {
             for (int j=1;j<=len;j++) {
                 if (graph[i][j]) can.push_back(j);
             }
-
         }
     }
     return 0;
