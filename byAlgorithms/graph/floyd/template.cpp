@@ -2,6 +2,7 @@
 using namespace std;
 
 // 支持负边权，不支持负环
+// O(v^3)
 
 vector<vector<int>> floyd(vector<vector<pair<int,int>>>& graph) {
     int v=graph.size()-1;
