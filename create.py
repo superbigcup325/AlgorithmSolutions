@@ -79,16 +79,15 @@ CPP_TEMPLATES = {
         "    return 0;\n"
         "}\n"
     ),
-    'lc': (
-        "#include <bits/stdc++.h>\n"
-        "using namespace std;\n"
-        "\n"
-        "class Solution {\n"
-        "public:\n"
-        "    \n"
-        "};\n"
-    ),
-    'default': (
+}
+
+TEMPLATE_PATH = Path(__file__).parent / 'template.cpp'
+
+
+def get_default_template() -> str:
+    if TEMPLATE_PATH.exists():
+        return TEMPLATE_PATH.read_text(encoding='utf-8')
+    return (
         "#include <bits/stdc++.h>\n"
         "using namespace std;\n"
         "\n"
@@ -100,47 +99,10 @@ CPP_TEMPLATES = {
         "    \n"
         "    return 0;\n"
         "}\n"
-    ),
-}
+    )
 
 MD_TEMPLATE = (
-    "# {name}\n"
-    "\n"
-    "## 题目描述\n"
-    "\n"
-    "\n"
-    "## 输入格式\n"
-    "\n"
-    "\n"
-    "## 输出格式\n"
-    "\n"
-    "\n"
-    "## 样例\n"
-    "\n"
-    "### 样例输入\n"
-    "```\n"
-    "\n"
-    "```\n"
-    "\n"
-    "### 样例输出\n"
-    "```\n"
-    "\n"
-    "```\n"
-    "\n"
-    "## 数据范围\n"
-    "\n"
-    "\n"
-    "## 解题思路\n"
-    "\n"
-    "\n"
-    "## 代码\n"
-    "\n"
-    "见 `solution.cpp`\n"
-    "\n"
-    "## 复杂度分析\n"
-    "\n"
-    "- 时间复杂度：O()\n"
-    "- 空间复杂度：O()\n"
+
 )
 
 
@@ -176,7 +138,7 @@ def create_solution(platform_key: str, problem_name: str, round_name: str = None
 
     problem_dir.mkdir(parents=True)
 
-    cpp_content = CPP_TEMPLATES.get(platform_key, CPP_TEMPLATES['default'])
+    cpp_content = CPP_TEMPLATES.get(platform_key, get_default_template())
     cpp_path = problem_dir / 'solution.cpp'
     cpp_path.write_text(cpp_content)
 
