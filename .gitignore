@@ -10,6 +10,10 @@ workspace.xml
 .vscode/
 *.code-workspace
 
+# cph
+.cph-ng
+.cph
+
 # Eclipse
 .project
 .classpath
