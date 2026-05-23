@@ -6,6 +6,9 @@ using namespace std;
 const int mod = 1e9+7;
 const int N = 1e5+5;
 
+// 题目要求数组满足斐波形式，那么目标数组肯定是k倍的斐波那契数列
+// 直接计算满足k倍的数量，剩下的就是需要改的数量
+
 signed main() {
     int len;
     cin>>len;
